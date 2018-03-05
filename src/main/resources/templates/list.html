@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Kirjanpito</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> </meta>
+</head>
+<body>
+<h1>Laitteet</h1>
+<table>
+		<tr>
+		    <th>Type</th>
+		    <th>Model</th>
+		    <th>Defect</th>
+		    <th>Date</th>
+		    <th>State</th>
+		    <th>Price</th>
+		</tr>  
+    	<tr th:each = "device : ${devices}">
+    		<td th:text="${device.type}"></td>
+    		<td th:text="${device.model}"></td>
+    		<td th:text="${device.defect}"></td> 
+    		<td th:text="${device.date}"></td>
+    		<td th:text="${device.state}"></td>
+    		<td th:text="${device.price}"></td>
+ 			<td><a th:href="@{/delete/{id}(id=${device.id})}">Delete</a></td>		
+    	</tr>
+     </table>
+     <a href="/add">Add Device</a>
+</body>
+</html>
