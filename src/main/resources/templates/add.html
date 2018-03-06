@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Devicelist</title>
+<link href="tyyli.css" rel="stylesheet" type="text/css"> </link>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -10,27 +11,27 @@
 		<form th:object="${device}" th:action="@{save}" action="#" method="post">
 		  	<table class="table table-bordered" style="width: 80%; margin: auto">
 				<tr>
-					<td><label for="type">Type</label> <input class="form-control" type="text"
+					<td><label for="type">Type (type of the device(phone, tablet, laptop))</label> <input class="form-control" type="text"
 						id="type" th:field="*{type}" /></td>
 				</tr>
 				<tr>
-					<td><label for="model">Model</label> <input class="form-control" type="text"
+					<td><label for="model">Model (model number of the device)</label> <input class="form-control" type="text"
 						id="model" th:field="*{model}" /></td>
 				</tr>
 				<tr>
-					<td><label for="defect">Defect</label> <input class="form-control" type="text"
+					<td><label for="defect">Defect (description of the problem with device)</label> <input class="form-control" type="text"
 						id="defect" th:field="*{defect}" /></td>
 				</tr>
 				<tr>
-					<td><label for="date">Date</label> <input class="form-control" type="text"
+					<td><label for="date">Date (date the device arrived)</label> <input class="form-control" type="text"
 						id="date" th:field="*{date}" /></td>
 				</tr>
 				<tr>
-					<td><label for="state">State</label> <input class="form-control" type="text"
+					<td><label for="state">State (current state of the repair)</label> <input class="form-control" type="text"
 						id="state" th:field="*{state}" /></td>
 				</tr>
 				<tr>
-					<td><label for="price">Price</label> <input class="form-control" type="text"
+					<td><label for="price">Costs (overall costs of repair)</label> <input class="form-control" type="text"
 						id="price" th:field="*{price}" /></td>
 				</tr>
 				<tr>

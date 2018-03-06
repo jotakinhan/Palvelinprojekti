@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Kirjanpito</title>
+<link href="tyyli.css" rel="stylesheet" type="text/css"> </link>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> </meta>
 </head>
 <body>
@@ -14,7 +15,7 @@
 		    <th>Defect</th>
 		    <th>Date</th>
 		    <th>State</th>
-		    <th>Price</th>
+		    <th>Costs</th>
 		</tr>  
     	<tr th:each = "device : ${devices}">
     		<td th:text="${device.type}"></td>
