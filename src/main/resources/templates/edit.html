@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Booklist</title>
+<link href="tyyli.css" rel="stylesheet" type="text/css"> </link>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit book</h1>
+	<div>
+		<form th:object="${device}" th:action="@{../save}" action="#"
+			method="post">
+
+			<label for="type">Type</label> <input type="text" id="type"
+				th:field="*{type}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="model">Model</label> <input type="text" id="model"
+				th:field="*{model}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="defect">Defect</label> <input type="text" id="defect"
+				th:field="*{defect}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="date">Date</label> <input type="text" id="date"
+				th:field="*{date}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="state">State</label> <input type="text" id="state"
+				th:field="*{state}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="price">Costs</label> <input type="text" id="price"
+				th:field="*{price}" />
+
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="hidden" th:field="*{id}" class="form-control" /> <input
+				id="button" class="btn btn-success" type="submit" value="Save"></input>
+		</form>
+
+
+	</div>
+</body>
+</html>

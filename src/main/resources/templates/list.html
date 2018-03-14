@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="ISO-8859-1">
 <title>Kirjanpito</title>
@@ -8,7 +8,14 @@
 </head>
 <body>
 <h1>Laitteet</h1>
-<table>
+<div class="col-md-4">
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-danger"/>
+		</form>
+	</div>
+<table border="2">
 		<tr>
 		    <th>Type</th>
 		    <th>Model</th>
@@ -24,9 +31,12 @@
     		<td th:text="${device.date}"></td>
     		<td th:text="${device.state}"></td>
     		<td th:text="${device.price}"></td>
- 			<td><a th:href="@{/delete/{id}(id=${device.id})}">Delete</a></td>		
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/edit/{id}(id=${device.id})}">Edit</a></td>
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${device.id})}">Delete</a></td>		
     	</tr>
      </table>
-     <a href="/add">Add Device</a>
+     <a class="btn btn-danger" href="/add">Add Device</a>
+     <div style="clear: both; display: block; height: 10px;"></div>
+     <a class="btn btn-danger" href="/api/devices">Rest get all devices</a>
 </body>
 </html>

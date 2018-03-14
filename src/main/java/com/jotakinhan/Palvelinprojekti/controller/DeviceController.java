@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jotakinhan.Palvelinprojekti.model.Device;
 import com.jotakinhan.Palvelinprojekti.model.DeviceRepository;
@@ -17,6 +18,12 @@ public class DeviceController {
 	
 	@Autowired
 	private DeviceRepository repository;
+	
+	// login page
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }
 	
 	@RequestMapping(value = "/list") //main page, where list of devices is displayed
     public String deviceList(Model model) {	
@@ -31,6 +38,14 @@ public class DeviceController {
         return "add";
     }
     
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET) //edit page
+    public String editDevice(@PathVariable("id") Long deviceId, Model model) {
+    	Device device = repository.findOne(deviceId);
+    	model.addAttribute("device", device);
+    	
+        return "edit";
+    }
+    
     @RequestMapping(value = "/save", method = RequestMethod.POST) //a method for saving new entries
     public String save(Device device){
         repository.save(device);
@@ -42,5 +57,12 @@ public class DeviceController {
     	repository.delete(deviceId);
         return "redirect:../list";
     }
+    
+ // REST service to get all devices
+    @RequestMapping(value="/devices", method = RequestMethod.GET)
+    public @ResponseBody List<Device> deviceListRest() {	
+        return (List<Device>) repository.findAll();
+        
+    }    
 
 }
